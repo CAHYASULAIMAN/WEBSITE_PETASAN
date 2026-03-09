@@ -1,179 +1,129 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
-<meta charset="UTF-8">
-<title>ESP32 Heater Control</title>
-
-<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-
-<style>
-
-body{
-margin:0;
-padding:0;
-font-family:Arial;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-}
-
-.card{
-
-background:#1b1b1b;
-padding:40px;
-border-radius:15px;
-width:320px;
-text-align:center;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-
-}
-
-h1{
-margin-bottom:10px;
-}
-
-.status{
-
-font-size:20px;
-margin-bottom:30px;
-letter-spacing:2px;
-
-}
-
-.switch{
-
-position:relative;
-display:inline-block;
-width:100px;
-height:50px;
-
-}
-
-.switch input{
-display:none;
-}
-
-.slider{
-
-position:absolute;
-cursor:pointer;
-top:0;
-left:0;
-right:0;
-bottom:0;
-
-background-color:#555;
-
-transition:.4s;
-border-radius:50px;
-
-}
-
-.slider:before{
-
-position:absolute;
-content:"";
-
-height:40px;
-width:40px;
-left:5px;
-bottom:5px;
-
-background:white;
-transition:.4s;
-border-radius:50%;
-
-}
-
-input:checked + .slider{
-
-background:#2ecc71;
-
-}
-
-input:checked + .slider:before{
-
-transform:translateX(50px);
-
-}
-
-.mqtt{
-
-margin-top:20px;
-font-size:14px;
-opacity:0.8;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-<h1>ESP32 Heater</h1>
-
-<div id="status" class="status">
-STATUS : OFF
-</div>
-
-<label class="switch">
-
-<input type="checkbox" id="toggle">
-
-<span class="slider"></span>
-
-</label>
-
-<div class="mqtt">
-MQTT Broker: broker.hivemq.com
-</div>
-
-</div>
-
-<script>
-
-const client = mqtt.connect("wss://broker.hivemq.com:8884/mqtt")
-
-const toggle = document.getElementById("toggle")
-
-const statusText = document.getElementById("status")
-
-client.on("connect", function(){
-
-console.log("MQTT Connected")
-
-})
-
-toggle.addEventListener("change", function(){
-
-if(toggle.checked){
-
-statusText.innerHTML="STATUS : ON 🔥"
-
-client.publish("esp32/heater","ON")
-
-}
-
-else{
-
-statusText.innerHTML="STATUS : OFF ❄"
-
-client.publish("esp32/heater","OFF")
-
-}
-
-})
-
-</script>
-
-</body>
-
+    <head>
+        <meta charset="UTF-8">
+        <title>ESP32 ROCKET LAUNCHER - CAHYA SULAIMAN</title>
+        <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+        <style>
+            body{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            background:linear-gradient(135deg,#414c50,#203a43,#3a1515);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            }
+
+            .card{
+            background:#1b1b1b;
+            padding:150px;
+            border-radius:15px;
+            width:600px;
+            text-align:center;
+            box-shadow:0 0 20px rgba(209, 24, 24, 0.5);
+            }
+
+            h1{
+            margin-bottom:10px;
+            }
+
+            .status{
+            font-size:20px;
+            margin-bottom:30px;
+            letter-spacing:2px;
+            }
+
+            .switch{
+            position:relative;
+            display:inline-block;
+            width:100px;
+            height:50px;
+            }
+
+            .switch input{
+            display:none;
+            }
+
+            .slider{
+            position:absolute;
+            cursor:pointer;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color:#555555;
+            transition:.4s;
+            border-radius:50px;
+            }
+
+            .slider:before{
+            position:absolute;
+            content:"";
+            height:40px;
+            width:40px;
+            left:5px;
+            bottom:5px;
+            background:white;
+            transition:.4s;
+            border-radius:50%;
+            }
+
+            input:checked + .slider{
+            background:#2ecc71;
+            }
+
+            input:checked + .slider:before{
+            transform:translateX(50px);
+            }
+
+            .mqtt{
+            margin-top:20px;
+            font-size:14px;
+            opacity:0.8;
+            }
+            </style>
+    </head>
+
+    <body>
+        <div class="card">
+            <h1>ROCKET LAUNCHER</h1>
+            <div id="status" class="status">
+                STATUS : OFF
+            </div>
+        
+            <label class="switch">
+                <input type="checkbox" id="toggle">
+                <span class="slider"></span>
+            </label>
+        
+            <div class="mqtt">
+                API created from : MQTT
+            </div>
+            <a href="https://github.com/CAHYASULAIMAN/WEBSITE_PETASAN">GIThub ROCKET</a>
+          
+        </div>
+        <script>
+            const client = mqtt.connect("wss://broker.hivemq.com:8884/mqtt")
+            const toggle = document.getElementById("toggle")
+            const statusText = document.getElementById("status")
+            client.on("connect", function(){
+            console.log("MQTT Connected")
+            })
+        
+            toggle.addEventListener("change", function(){
+            if(toggle.checked){
+            statusText.innerHTML="STATUS : ON 🔥"
+            client.publish("esp32/heater","ON")
+            }
+        
+        else{
+            statusText.innerHTML="STATUS : OFF ❄"
+            client.publish("esp32/heater","OFF")
+            }
+            })
+        </script>
+    </body>
 </html>
